@@ -15,6 +15,8 @@ const pollUntilDeployed = (url, expectedContent, timeoutMs = 30 * 1000, retries 
     if (retries > 0) {
         return request.get({
             url: url,
+            insecure: true,
+            rejectUnauthorized: false,
             simple: false // don't reject on 404
         }).then(res => {
             if (res === expectedContent) {
